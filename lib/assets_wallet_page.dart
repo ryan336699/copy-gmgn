@@ -259,7 +259,7 @@ class _AssetsWalletPageState extends State<AssetsWalletPage> {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
+                  color: color.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Icon(
@@ -486,7 +486,7 @@ class _AssetsWalletPageState extends State<AssetsWalletPage> {
           ),
           const SizedBox(height: 32),
           // Empty state placeholder
-          Container(
+          SizedBox(
             height: 200,
             child: Center(
               child: Column(
