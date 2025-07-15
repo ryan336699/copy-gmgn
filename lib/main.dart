@@ -145,10 +145,9 @@ class _AssetsPageState extends State<AssetsPage> {
 
   Future<void> _checkLoginStatus() async {
     try {
-      // Wait for a few frames to ensure the framework is ready
       await Future.delayed(const Duration(milliseconds: 300));
       if (!mounted) return;
-      
+
       final prefs = await SharedPreferences.getInstance();
       if (mounted) {
         setState(() {
@@ -184,9 +183,7 @@ class _AssetsPageState extends State<AssetsPage> {
       );
     }
 
-    return _isLoggedIn
-        ? AssetsWalletPage(onLogout: _handleLogout)
-        : AssetsOnboardingPage(onLoginSuccess: _checkLoginStatus);
+    return _isLoggedIn ? AssetsWalletPage(onLogout: _handleLogout) : AssetsOnboardingPage(onLoginSuccess: _checkLoginStatus);
   }
 }
 
@@ -263,7 +260,6 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ],
           ),
         ),
-
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
@@ -314,7 +310,6 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ],
           ),
         ),
-
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: const Row(
@@ -344,7 +339,6 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ],
           ),
         ),
-
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Row(
@@ -374,7 +368,6 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ],
           ),
         ),
-
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
@@ -390,7 +383,6 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ),
           ),
         ),
-
         Container(
           padding: const EdgeInsets.all(16),
           child: SingleChildScrollView(
@@ -408,7 +400,6 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ),
           ),
         ),
-
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
@@ -491,9 +482,7 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ),
           ),
         ),
-
         const SizedBox(height: 16),
-
         Expanded(
           child: ListView(
             children: [
@@ -564,7 +553,6 @@ class _TradingInterfaceState extends State<TradingInterface> {
             ],
           ),
         ),
-
         Container(
           margin: const EdgeInsets.all(16),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -747,206 +735,204 @@ class _TradingInterfaceState extends State<TradingInterface> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.network(
-              avatar,
-              width: 40,
-              height: 40,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFE5E5EA),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Icon(
-                    Icons.token,
-                    color: Color(0xFF8E8E93),
-                  ),
-                );
-              },
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                avatar,
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE5E5EA),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Icon(
+                      Icons.token,
+                      color: Color(0xFF8E8E93),
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-          const SizedBox(width: 12),
-          
-          Expanded(
-            flex: 3,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Flexible(
-                      child: Text(
-                        description,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF8E8E93),
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Icon(
-                      Icons.copy,
-                      size: 12,
-                      color: Color(0xFF8E8E93),
-                    ),
-                    const SizedBox(width: 8),
-                    const Icon(
-                      Icons.search,
-                      size: 12,
-                      color: Color(0xFF8E8E93),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
+            const SizedBox(width: 12),
+            Expanded(
+              flex: 3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: isPositive ? const Color(0xFF30D158) : const Color(0xFFFF3B30),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
+                      Flexible(
                         child: Text(
-                          change1m,
+                          name,
                           style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Flexible(
+                        child: Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF8E8E93),
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      const Icon(
+                        Icons.copy,
+                        size: 12,
+                        color: Color(0xFF8E8E93),
+                      ),
+                      const SizedBox(width: 8),
+                      const Icon(
+                        Icons.search,
+                        size: 12,
+                        color: Color(0xFF8E8E93),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: isPositive ? const Color(0xFF30D158) : const Color(0xFFFF3B30),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Text(
+                            change1m,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        time,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF8E8E93),
+                        const SizedBox(width: 8),
+                        Text(
+                          time,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF8E8E93),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Icon(Icons.people, size: 12, color: Color(0xFF8E8E93)),
-                      Text(
-                        holders,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF8E8E93),
+                        const SizedBox(width: 12),
+                        const Icon(Icons.people, size: 12, color: Color(0xFF8E8E93)),
+                        Text(
+                          holders,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF8E8E93),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        'V $volume',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF8E8E93),
+                        const SizedBox(width: 12),
+                        Text(
+                          'V $volume',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF8E8E93),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        'MC $marketCap',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF8E8E93),
+                        const SizedBox(width: 12),
+                        Text(
+                          'MC $marketCap',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF8E8E93),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Text(
-                        '🙋 $change5m',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF30D158),
+                  const SizedBox(height: 4),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Text(
+                          '🙋 $change5m',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF30D158),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        '💰 $change1h',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF30D158),
+                        const SizedBox(width: 8),
+                        Text(
+                          '💰 $change1h',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF30D158),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        '🎯 $change6h',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF30D158),
+                        const SizedBox(width: 8),
+                        Text(
+                          '🎯 $change6h',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF30D158),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        '👀 $change24h',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF8E8E93),
+                        const SizedBox(width: 8),
+                        Text(
+                          '👀 $change24h',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF8E8E93),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        '📈 $buyCount',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: isPositive ? const Color(0xFF30D158) : const Color(0xFFFF3B30),
+                        const SizedBox(width: 8),
+                        Text(
+                          '📈 $buyCount',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isPositive ? const Color(0xFF30D158) : const Color(0xFFFF3B30),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          
-          const SizedBox(width: 12),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: const Color(0xFF30D158),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.flash_on, size: 16, color: Colors.white),
-                SizedBox(width: 4),
-                Text(
-                  '1',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+            const SizedBox(width: 12),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFF30D158),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.flash_on, size: 16, color: Colors.white),
+                  SizedBox(width: 4),
+                  Text(
+                    '1',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
       ),
     );
   }
