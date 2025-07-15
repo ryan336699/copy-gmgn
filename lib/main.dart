@@ -561,7 +561,7 @@ class _TradingInterfaceState extends State<TradingInterface> {
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
+                color: Colors.black.withOpacity(0.1),
                 blurRadius: 10,
                 offset: const Offset(0, 2),
               ),
@@ -615,7 +615,7 @@ class _TradingInterfaceState extends State<TradingInterface> {
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.1),
+                color: color.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Icon(

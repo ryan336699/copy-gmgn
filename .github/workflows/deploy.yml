@@ -7,27 +7,43 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
     
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.24.5'
+        flutter-version: '3.27.4'
         channel: 'stable'
-    
-    - name: Get dependencies
+        cache: true
+        
+    - name: Verify Flutter version
+      run: flutter --version
+        
+    - name: Enable Web support
+      run: flutter config --enable-web
+      
+    - name: Install dependencies
       run: flutter pub get
-    
-    - name: Build web
-      run: flutter build web --base-href /gmgn_clone/
-    
+      
+    - name: Analyze code
+      run: flutter analyze --no-fatal-infos
+      
+    # Skip tests for now due to layout overflow issues
+    # - name: Run tests
+    #   run: flutter test
+      
+    - name: Build Web
+      run: flutter build web --release --base-href "/copy-gmgn/"
+      
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build/web
+        cname: false

@@ -259,7 +259,7 @@ class _AssetsWalletPageState extends State<AssetsWalletPage> {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
+                  color: color.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Icon(
